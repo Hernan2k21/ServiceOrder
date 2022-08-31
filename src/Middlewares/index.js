@@ -1,3 +1,4 @@
+const errorResponses = require('../Responses/error')
 const logError = (e, req, res, next) => {
   console.log( `Error ${e}`) 
   console.log(e.stack)
@@ -12,8 +13,8 @@ const sendError = (e, req, res, next) => {
 }
 
 const notFound = (req, res, next) => {
-  res.status(404)
-  res.json({message: 'Route not Found Service'})
+  res.status(errorResponses[404].httpCode)
+  res.json({message: errorResponses[404].message})
 }
 
 

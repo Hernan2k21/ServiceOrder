@@ -1,10 +1,10 @@
 
-const {exampleAction}= require('../Actions/order')
+const {getAllOrders}= require('../Actions/order')
 
 module.exports = {
-	async example(req, res, next) {
+	async getAllOrders(req, res, next) {
         try { 
-            const data = await exampleAction()
+            const data = await getAllOrders()
 			res.status(200).json(data)
             
         }catch(e){
