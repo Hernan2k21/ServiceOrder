@@ -4,4 +4,5 @@ const router = express.Router();
 
 
 router.get('/', orderController.getAllOrders)
+router.post('/', orderController.postOrder)
 module.exports = router;
