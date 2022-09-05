@@ -7,7 +7,7 @@ const productSchema = Joi.object().keys({
 
 const  orderSchema = Joi.object().keys({
     total: Joi.number().required(),
-    productsList: Joi.array().items(productSchema)
+    products_list: Joi.array().items(productSchema)
 
   })
 
