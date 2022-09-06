@@ -1,5 +1,6 @@
-const [  SCHEMA_VALIDATION_ERROR] = [
+const [  SCHEMA_VALIDATION_ERROR, ORDER_VALIDATION_ERROR] = [
     'SCHEMA_VALIDATION_ERROR',
+    'ORDER_VALIDATION_ERROR'
   ];
   
   class BaseError extends Error {
@@ -28,7 +29,27 @@ const [  SCHEMA_VALIDATION_ERROR] = [
       this.path = params.details[0].path;
     }
   }
+  class OrderValidationError extends BaseError {
+    constructor(params = {}) {
+      super(params);
+      this.name =  ORDER_VALIDATION_ERROR;
+      this.httpCode = 400;
+      this.message= params.message;
+    }
+  }
+  class ServiceCallError extends BaseError {
+    constructor(params = {}) {
+      super(params);
+        
+      this.name =  params.response.data.name;
+      this.httpCode = params.response.code || 400;
+      this.message=  params.response.data.message;
+  
+    }
+  }
   module.exports = {
     SchemaValidationError,
-    Constants: [SCHEMA_VALIDATION_ERROR],
+    OrderValidationError,
+    ServiceCallError,
+    Constants: [SCHEMA_VALIDATION_ERROR, ORDER_VALIDATION_ERROR],
   };
