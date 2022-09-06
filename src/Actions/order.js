@@ -1,4 +1,5 @@
 const orderModel = require('../Database/models').Order
+
 const getAllOrders = async () =>{
 
     try {
@@ -10,5 +11,17 @@ const getAllOrders = async () =>{
     
 }
 
+const createOrder = async (orderData) =>{
 
-module.exports = {getAllOrders}
+    try {
+        const order = await orderModel.create(orderData)
+        return order
+    } catch (e) {
+        throw(e)
+    }
+    
+}
+
+
+
+module.exports = {getAllOrders, createOrder}

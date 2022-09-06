@@ -1,6 +1,6 @@
 
 const {getAllOrders, createOrder}= require('../Actions/order')
-const {validateSchema} = require('../Validations')
+const {validateSchema, validateOrderTotal} = require('../Validations')
 const orderSchema = require('../Validations/Schemas/order')
 module.exports = {
 	async getAllOrders(req, res, next) {
@@ -15,8 +15,8 @@ module.exports = {
 	},
     async postOrder(req, res, next) {
         try { 
-            
             const orderData = await validateSchema(req.body, orderSchema)
+            validateOrderTotal(req.body)
             const data = await createOrder(orderData)
 			res.status(200).json(data)
             

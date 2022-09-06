@@ -10,5 +10,9 @@ module.exports = {
     404: {
         httpCode: 404,
         message: 'Route not found orders service'
+    },
+    total_missmatch: {
+        httpCode: 400,
+        message: 'Order total missmatch with products array total'
     }
 }
